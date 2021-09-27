@@ -4,7 +4,42 @@ const quoteInputElement = document.getElementById('quoteInput')
 const progressElement = document.getElementById('progress')
 const resultElement = document.getElementById('result')
 const restartButton = document.getElementById('restart')
+const jadeTheme = document.getElementById('themeJade')
+const ecoTheme = document.getElementById('themeEco')
+const paperTheme = document.getElementById('themePaper')
+const splashTheme = document.getElementById('themeSplash')
+const retroTheme = document.getElementById('themeRetro')
 let quote = ''
+
+
+const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+}
+
+function switchTheme(theme){
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+}
+
+function getRandomQuote() {
+    return fetch(RAMDOM_QUOTE_API_URL)
+        .then(response => response.json())
+        .then(data => data.content)
+}
+
+async function renderNewQuote() {
+    quote = await getRandomQuote()
+    quoteDisplayElement.innerHTML = ''
+    quote.split('').forEach(character => {
+        const characterSpan = document.createElement('span')
+        characterSpan.innerText = character
+        quoteDisplayElement.appendChild(characterSpan)
+    })
+    quoteInputElement.value = null
+    quoteInputElement.focus()
+    updateProgress()
+}
 
 quoteInputElement.addEventListener('input', () => {
     checkQuote()
@@ -39,25 +74,6 @@ function checkQuote() {
     if (correct) endProgress()
 }
 
-function getRandomQuote() {
-    return fetch(RAMDOM_QUOTE_API_URL)
-        .then(response => response.json())
-        .then(data => data.content)
-}
-
-async function renderNewQuote() {
-    quote = await getRandomQuote()
-    quoteDisplayElement.innerHTML = ''
-    quote.split('').forEach(character => {
-        const characterSpan = document.createElement('span')
-        characterSpan.innerText = character
-        quoteDisplayElement.appendChild(characterSpan)
-    })
-    quoteInputElement.value = null
-    quoteInputElement.focus()
-    updateProgress()
-}
-
 let progress = false
 resultElement.style.display = "none";
 let StartTime = 0
@@ -88,6 +104,22 @@ restartButton.onclick = function(){
     progress = false
     quoteInputElement.focus()
     renderNewQuote()
+};
+
+jadeTheme.onclick = function(){
+    switchTheme('jade')
+};
+ecoTheme.onclick = function(){
+    switchTheme('eco')
+};
+paperTheme.onclick = function(){
+    switchTheme('paper')
+};
+splashTheme.onclick = function(){
+    switchTheme('splash')
+};
+retroTheme.onclick = function(){
+    switchTheme('retro')
 };
 
 renderNewQuote()

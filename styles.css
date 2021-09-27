@@ -1,12 +1,53 @@
 :root {
-    --black: #000000;
-    --white: #ffffff;
-    --primary: #0f0f10;
-    --accent: #00b1ff;
-    --accent-darken: #008dcc;
-    --accent-lighten: #32c0ff;
+    --primary: #262a33;
+    --accent: #43ffaf;
+    --accent-darken: #10CC7C;
+    --accent-lighten: #76FFE2;
     --success: #008000;
     --error: #ff4500;
+    --black: #000000;
+    --white: #ffffff;
+}
+
+[data-theme="jade"] {
+    --primary: #262a33;
+    --accent: #43ffaf;
+    --accent-darken: #10CC7C;
+    --accent-lighten: #76FFE2;
+}
+
+[data-theme="paper"] {
+    --primary: #eeeeee;
+    --accent: #444444;
+    --accent-darken: #aaaaaa;
+    --accent-lighten: #777777;
+}
+
+[data-theme="eco"] {
+    --primary: #f5eec2;
+    --accent: #416a59;
+    --accent-darken: #0E3726;
+    --accent-lighten: #a9c25d;
+    --success: #a9c25d;
+    --error: #363a60;
+}
+
+[data-theme="splash"] {
+    --primary: #394F8A;
+    --accent: #9CF6FB;
+    --accent-darken: #E1FCFD;
+    --accent-lighten: #E1FCFD;
+    --success: #63BCE5;
+    --error: #FF6864;
+}
+
+[data-theme="retro"] {
+    --primary: #11052C;
+    --accent: #F43B86;
+    --accent-darken: #FFE459;
+    --accent-lighten: #FFE459;
+    --success: #E1E8EB;
+    --error: #FFE459;
 }
 
 * {
@@ -22,12 +63,57 @@ body {
     background-color: var(--primary);
 }
 
-body, .quote-input{
+body, .quote-input {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.theme-settings {
+    display: inline-block;
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--primary);
+    font-size: 1rem;
+    font-weight: bold;
+    padding: .5rem .5rem;
+    border-radius: .5rem;
+    cursor: pointer
+}
+
+.theme-options {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    overflow: auto;
+    border-radius: .5rem;
+}
+
+.theme-settings:hover .theme-options {
+    display: block;
+}
+
+.theme-option {
+    display: block;
+    padding: 5px;
+    padding-left: 1rem;
+    background-color: var(--primary);
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: bold;
+    cursor: pointer
+}
+
+.theme-option:hover {
+    color: var(--accent-darken);
 }
 
 .container {
     background-color: var(--accent);
+    color: var(--primary);
     padding: 1rem;
     border-radius: .5rem;
     width: 700px;
@@ -41,6 +127,7 @@ body, .quote-input{
     color: var(--accent);
     font-weight: bold;
 }
+
 .restart {
     position: absolute;
     background-color: transparent;
@@ -51,10 +138,13 @@ body, .quote-input{
     font-weight: bold;
     padding: .5rem 1rem;
     border-radius: .5rem;
+    cursor: pointer
 }
+
 .restart:hover, .restart:focus{
-    border-color: var(--accent-lighten);
-    color: var(--accent-lighten);
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--primary);
     outline: 0;
 }
 
@@ -67,6 +157,7 @@ body, .quote-input{
 .quote-input {
     background-color: transparent;
     border: 2px solid var(--accent-darken);
+    color: var(--primary);
     outline: none;
     width: 100%;
     height: 8rem;

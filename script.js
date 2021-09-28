@@ -5,12 +5,17 @@ const progressElement = document.getElementById("progress");
 const resultElement = document.getElementById("result");
 const restartButton = document.getElementById("restart");
 const themeSetting = document.getElementById("themeSettings");
-const jadeTheme = document.getElementById("themeJade");
-const ecoTheme = document.getElementById("themeEco");
-const paperTheme = document.getElementById("themePaper");
-const splashTheme = document.getElementById("themeSplash");
-const retroTheme = document.getElementById("themeRetro");
+const themeOptions = document.getElementById("themeOptions");
 let quote = "";
+
+const allThemes = ["jade", "eco", "paper", "splash", "retro"];
+allThemes.forEach(function (theme) {
+    x = document.createElement("div");
+    x.className = "theme-option";
+    x.id = theme + "Theme";
+    x.innerHTML = theme;
+    themeOptions.appendChild(x);
+});
 
 let currentTheme = localStorage.getItem("theme")
     ? localStorage.getItem("theme")
@@ -51,7 +56,7 @@ quoteInputElement.addEventListener("input", () => {
         progress = true;
         startTime = new Date();
     }
-})
+});
 
 function checkQuote() {
     const arrayQuote = quoteDisplayElement.querySelectorAll("span");
@@ -79,7 +84,7 @@ function checkQuote() {
 
 let progress = false;
 resultElement.style.display = "none";
-let StartTime = 0;
+let startTime = 0;
 function updateProgress() {
     quoteLength = quote.split(" ").length;
     inputLength = quoteInputElement.value.split(" ").length - 1;
@@ -107,22 +112,22 @@ restartButton.onclick = function () {
     progress = false;
     quoteInputElement.focus();
     renderNewQuote();
-}
+};
 
-jadeTheme.onclick = function () {
-    switchTheme("jade");
-}
-ecoTheme.onclick = function () {
-    switchTheme("eco");
-}
-paperTheme.onclick = function () {
-    switchTheme("paper");
-}
-splashTheme.onclick = function () {
-    switchTheme("splash");
-}
-retroTheme.onclick = function () {
-    switchTheme("retro");
-}
+themeSetting.onmouseleave = function () {
+    document.documentElement.setAttribute("data-theme", currentTheme);
+};
+
+themeOptions.addEventListener("mouseover", (e) => {
+    let myEvent = e.target || e.currentTarget;
+    theme = myEvent.innerHTML;
+    document.documentElement.setAttribute("data-theme", theme);
+});
+
+themeOptions.addEventListener("click", (e) => {
+    let myEvent = e.target || e.currentTarget;
+    theme = myEvent.innerHTML;
+    switchTheme(theme);
+});
 
 renderNewQuote();

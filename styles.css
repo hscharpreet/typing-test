@@ -1,8 +1,8 @@
 :root {
     --primary: #262a33;
     --accent: #43ffaf;
-    --accent-darken: #10CC7C;
-    --accent-lighten: #76FFE2;
+    --accent-darken: #10cc7c;
+    --accent-lighten: #76ffe2;
     --success: #008000;
     --error: #ff4500;
     --black: #000000;
@@ -12,8 +12,8 @@
 [data-theme="jade"] {
     --primary: #262a33;
     --accent: #43ffaf;
-    --accent-darken: #10CC7C;
-    --accent-lighten: #76FFE2;
+    --accent-darken: #10cc7c;
+    --accent-lighten: #76ffe2;
 }
 
 [data-theme="paper"] {
@@ -26,28 +26,28 @@
 [data-theme="eco"] {
     --primary: #f5eec2;
     --accent: #416a59;
-    --accent-darken: #0E3726;
+    --accent-darken: #0e3726;
     --accent-lighten: #a9c25d;
     --success: #a9c25d;
     --error: #363a60;
 }
 
 [data-theme="splash"] {
-    --primary: #394F8A;
-    --accent: #9CF6FB;
-    --accent-darken: #E1FCFD;
-    --accent-lighten: #E1FCFD;
-    --success: #63BCE5;
-    --error: #FF6864;
+    --primary: #394f8a;
+    --accent: #9cf6fb;
+    --accent-darken: #e1fcfd;
+    --accent-lighten: #e1fcfd;
+    --success: #63bce5;
+    --error: #ff6864;
 }
 
 [data-theme="retro"] {
-    --primary: #11052C;
-    --accent: #F43B86;
-    --accent-darken: #FFE459;
-    --accent-lighten: #FFE459;
-    --success: #E1E8EB;
-    --error: #FFE459;
+    --primary: #11052c;
+    --accent: #f43b86;
+    --accent-darken: #ffe459;
+    --accent-lighten: #ffe459;
+    --success: #e1e8eb;
+    --error: #ffe459;
 }
 
 * {
@@ -63,8 +63,10 @@ body {
     background-color: var(--primary);
 }
 
-body, .quote-input {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+body,
+.quote-input {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
 }
 
 .theme-settings {
@@ -77,19 +79,19 @@ body, .quote-input {
     color: var(--primary);
     font-size: 1rem;
     font-weight: bold;
-    padding: .5rem .5rem;
-    border-radius: .5rem;
-    cursor: pointer
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
 }
 
 .theme-options {
     display: none;
     position: absolute;
-    bottom: 0;
+    bottom: 2.2rem;
     right: 0;
     width: 80px;
     overflow: auto;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
 }
 
 .theme-settings:hover .theme-options {
@@ -104,7 +106,7 @@ body, .quote-input {
     font-size: 1rem;
     color: var(--accent);
     font-weight: bold;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .theme-option:hover {
@@ -115,12 +117,13 @@ body, .quote-input {
     background-color: var(--accent);
     color: var(--primary);
     padding: 1rem;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     width: 700px;
     max-width: 90%;
 }
 
-.progress, .result {
+.progress,
+.result {
     position: absolute;
     top: 2rem;
     font-size: 3rem;
@@ -136,12 +139,13 @@ body, .quote-input {
     font-size: 1rem;
     color: var(--accent);
     font-weight: bold;
-    padding: .5rem 1rem;
-    border-radius: .5rem;
-    cursor: pointer
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
 }
 
-.restart:hover, .restart:focus{
+.restart:hover,
+.restart:focus {
     background-color: var(--accent);
     border-color: var(--accent);
     color: var(--primary);
@@ -163,9 +167,9 @@ body, .quote-input {
     height: 8rem;
     margin: auto;
     resize: none;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     font-size: 1rem;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
 }
 
 .quote-input:focus {

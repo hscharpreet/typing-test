@@ -69,6 +69,34 @@ body,
         sans-serif;
 }
 
+.settings {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--accent-darken);
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+}
+
+.test-type-heading {
+    display: inline;
+    color: var(--accent);
+    padding: 0.5rem 0.5rem;
+    font-weight: bold;
+}
+
+.test-type-option,
+.test-options {
+    display: inline;
+    cursor: pointer;
+    padding-right: 0.2rem;
+}
+
+.test-type-option.active {
+    color: var(--accent);
+    font-weight: bold;
+}
+
 .theme-settings {
     display: inline-block;
     position: absolute;

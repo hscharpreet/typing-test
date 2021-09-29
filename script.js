@@ -30,8 +30,25 @@ function switchTheme(theme) {
     currentTheme = theme;
 }
 
+let quoteSize = localStorage.getItem("quote-size")
+    ? localStorage.getItem("quote-size")
+    : "medium";
+if (quoteSize) {
+    document.documentElement.setAttribute("quote-size", quoteSize);
+}
+
+function switchQuoteSize(quoteSize) {
+    localStorage.setItem("quote-size", quoteSize);
+    renderNewQuote();
+}
+
 function getRandomQuote() {
-    return fetch(RAMDOM_QUOTE_API_URL)
+    param = "";
+    if (quoteSize == "short") param = "?maxLength=100";
+    else if (quoteSize == "medium") param = "?minLength=120&maxLength=160";
+    else param = "?minLength=180";
+    url = RAMDOM_QUOTE_API_URL.concat(param);
+    return fetch(url)
         .then((response) => response.json())
         .then((data) => data.content);
 }
@@ -47,6 +64,7 @@ async function renderNewQuote() {
     quoteInputElement.value = null;
     quoteInputElement.focus();
     updateProgress();
+    updateSettings();
 }
 
 quoteInputElement.addEventListener("input", () => {
@@ -80,6 +98,14 @@ function checkQuote() {
     });
 
     if (correct) endProgress();
+}
+
+function updateSettings() {
+    document.getElementById("shortQuote").classList.remove("active");
+    document.getElementById("mediumQuote").classList.remove("active");
+    document.getElementById("longQuote").classList.remove("active");
+    
+    document.getElementById(quoteSize+"Quote").classList.add("active");
 }
 
 let progress = false;
@@ -128,6 +154,12 @@ themeOptions.addEventListener("click", (e) => {
     let myEvent = e.target || e.currentTarget;
     theme = myEvent.innerHTML;
     switchTheme(theme);
+});
+
+testOptions.addEventListener("click", (e) => {
+    let myEvent = e.target || e.currentTarget;
+    quoteSize = myEvent.innerHTML;
+    switchQuoteSize(quoteSize);
 });
 
 renderNewQuote();
